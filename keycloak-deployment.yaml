@@ -15,17 +15,13 @@ spec:
         app: keycloak
     spec:
       containers:
-      - name: keycloak
-        image: keycloak/keycloak:26.3.0
+      - name: nginx
+        image: nginx:1.29.0
         env:
-        - name: KEYCLOAK_USER
-          value: "admin"
-        - name: KEYCLOAK_PASSWORD
-          value: "change-me"
-        - name: KEYCLOAK_IMPORT
-          value: "/tmp/realm.json"
+        - name: NGINX_PORT
+          value: 80
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         volumeMounts:
         - name: config-volume
           mountPath: /tmp/realm.json
